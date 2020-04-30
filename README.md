@@ -3,5 +3,7 @@ I have created an API by using Python Flask to use it inside of my some game mod
 You may want to config WSGI for the deployment and for your own stuff.
 
 `apt install ffmpeg`
-`pip3 install flask `
+
+`pip3 install flask`
+
 `pip3 install ffmpeg-python`
