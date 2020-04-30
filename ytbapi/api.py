@@ -32,6 +32,8 @@ class Converter:
             return {'result': False}
         if(validators.url(url)):
             yt = YouTube(request.args.get("url"))
+            if(yt.length > Converter.timeOut):
+                return {'result': "File length exception."}
             stream = yt.streams.filter(only_audio=True).first()
             stream.download(output_path=Converter.dir_path + "/files", filename = "{pid}".format(pid = request.args.get('pid')))
             command = "ffmpeg -i files/{pid}.mp4 -map 0:a:0 -b:a 96k {pid}.mp3".format(pid = request.args.get('pid'))
